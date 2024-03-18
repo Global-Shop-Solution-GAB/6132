@@ -1,0 +1,1776 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.F_WO..Create(BaseForm)
+Gui.F_WO..Caption("Open Work Order Project/Phase Dashboard")
+Gui.F_WO..Size(15375,11490)
+Gui.F_WO..MinX(15375)
+Gui.F_WO..MinY(11490)
+Gui.F_WO..Position(0,0)
+Gui.F_WO..BackColor(-2147483633)
+Gui.F_WO..MousePointer(0)
+Gui.F_WO..Event(UnLoad,Form_UnLoad)
+Gui.F_WO..AlwaysOnTop(False)
+Gui.F_WO..FontName("Tahoma")
+Gui.F_WO..FontSize(8.25)
+Gui.F_WO..ControlBox(True)
+Gui.F_WO..MaxButton(True)
+Gui.F_WO..MinButton(True)
+Gui.F_WO..Moveable(True)
+Gui.F_WO..Sizeable(True)
+Gui.F_WO..ShowInTaskBar(True)
+Gui.F_WO..TitleBar(True)
+Gui.F_WO.GsGCWO.Create(GsGridControl)
+Gui.F_WO.GsGCWO.Size(15000,9015)
+Gui.F_WO.GsGCWO.Position(45,1035)
+Gui.F_WO.GsGCWO.Event(RowCellClick,GsGCWO_RowCellClick)
+Gui.F_WO.GsGCWO.Event(CellValueChanged,GsGCWO_CellValueChanged)
+Gui.F_WO.GsGCWO.Enabled(True)
+Gui.F_WO.GsGCWO.Visible(True)
+Gui.F_WO.GsGCWO.Zorder(0)
+Gui.F_WO.progressBarStatus.Create(ProgressBar)
+Gui.F_WO.progressBarStatus.Size(4110,255)
+Gui.F_WO.progressBarStatus.Position(45,330)
+Gui.F_WO.progressBarStatus.Visible(False)
+Gui.F_WO.lblStatus.Create(Label,"****Change****",False,4110,255,0,45,105,True,0,"Arial",10,-2147483633,0,0)
+Gui.F_WO.lblStatus.BorderStyle(0)
+Gui.F_WO.picGSSLogo.Create(PictureBox)
+Gui.F_WO.picGSSLogo.Size(4125,960)
+Gui.F_WO.picGSSLogo.Position(5520,45)
+Gui.F_WO.picGSSLogo.Event(DblClick,picGSSLogo_DblClick)
+Gui.F_WO.picGSSLogo.ToolTip("Double-Click for additional functions")
+Gui.F_WO.picGSSLogo.Enabled(True)
+Gui.F_WO.picGSSLogo.Visible(True)
+Gui.F_WO.picGSSLogo.Zorder(0)
+Gui.F_WO.framePermissions.Create(Frame)
+Gui.F_WO.framePermissions.Size(1965,390)
+Gui.F_WO.framePermissions.Position(13080,555)
+Gui.F_WO.framePermissions.Enabled(True)
+Gui.F_WO.framePermissions.Visible(True)
+Gui.F_WO.framePermissions.Zorder(0)
+Gui.F_WO.framePermissions.Caption("")
+Gui.F_WO.framePermissions.FontName("Tahoma")
+Gui.F_WO.framePermissions.FontSize(8.25)
+Gui.F_WO.optView.Create(Option)
+Gui.F_WO.optView.Size(765,285)
+Gui.F_WO.optView.Position(225,60)
+Gui.F_WO.optView.Caption("View")
+Gui.F_WO.optView.Parent("framePermissions")
+Gui.F_WO.optView.Enabled(True)
+Gui.F_WO.optView.Visible(True)
+Gui.F_WO.optView.Zorder(0)
+Gui.F_WO.optView.FontName("Tahoma")
+Gui.F_WO.optView.FontSize(8.25)
+Gui.F_WO.optEdit.Create(Option)
+Gui.F_WO.optEdit.Enabled(False)
+Gui.F_WO.optEdit.Size(690,285)
+Gui.F_WO.optEdit.Position(1050,60)
+Gui.F_WO.optEdit.Caption("Edit")
+Gui.F_WO.optEdit.Parent("framePermissions")
+Gui.F_WO.optEdit.Visible(True)
+Gui.F_WO.optEdit.Zorder(0)
+Gui.F_WO.optEdit.FontName("Tahoma")
+Gui.F_WO.optEdit.FontSize(8.25)
+Gui.fOutProc..Create(BaseForm)
+Gui.fOutProc..Caption("Outside Process List")
+Gui.fOutProc..Size(9630,6540)
+Gui.fOutProc..MinX(0)
+Gui.fOutProc..MinY(0)
+Gui.fOutProc..Position(0,0)
+Gui.fOutProc..AlwaysOnTop(False)
+Gui.fOutProc..FontName("Tahoma")
+Gui.fOutProc..FontSize(8.25)
+Gui.fOutProc..ControlBox(True)
+Gui.fOutProc..MaxButton(False)
+Gui.fOutProc..MinButton(False)
+Gui.fOutProc..MousePointer(0)
+Gui.fOutProc..Moveable(True)
+Gui.fOutProc..Sizeable(True)
+Gui.fOutProc..ShowInTaskBar(True)
+Gui.fOutProc..TitleBar(True)
+Gui.fOutProc..Event(UnLoad,fOutProc_UnLoad)
+Gui.fOutProc.GsGCOPROC.Create(GsGridControl)
+Gui.fOutProc.GsGCOPROC.Enabled(True)
+Gui.fOutProc.GsGCOPROC.Visible(True)
+Gui.fOutProc.GsGCOPROC.Zorder(0)
+Gui.fOutProc.GsGCOPROC.Size(9630,6075)
+Gui.fOutProc.GsGCOPROC.Position(15,15)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+	V.Global.sError.Declare()
+	V.Global.sCustomer.Declare()
+	V.Global.bLoadData.Declare()
+	V.Global.bLongPart.Declare()
+	
+	'Program.External.Include.Library("PPT_Canny.lib")
+	
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Programmer: Bryan Pham
+'Date: 04/11/202
+'VT: add Hold column
+
+	V.Local.sIcon.Declare()
+	V.Local.sGssLogo.Declare()
+
+	F.Intrinsic.Control.Try
+	
+		F.Intrinsic.String.Build("{0}\ART\gss2.ico", V.Caller.GlobalDir, V.Local.sIcon)		
+		F.Intrinsic.String.Build("{0}\ART\GAB_GSS_Logo_Green_Dash.png", V.Caller.GlobalDir, V.Local.sGssLogo)
+		Gui.F_WO..Icon(V.Local.sIcon)
+		Gui.F_WO.picGSSLogo.Picture(V.Local.sGssLogo)
+		
+		'F.Intrinsic.Control.CallSub(CannyCheckUser, "Form", "F_WO")
+		
+		Gui.F_WO.optView.Value(True)
+		Gui.F_WO.optEdit.Value(False)
+		
+		F.Intrinsic.Control.CallSub(CheckPermissions)
+		F.Intrinsic.Control.CallSub(SetAnchors)
+		F.Intrinsic.Control.CallSub(SetContextMenu)
+		
+		Gui.F_WO..Show()
+		
+		F.ODBC.Connection!con.OpenCompanyConnection(900)
+		
+		F.Intrinsic.Control.CallSub(CheckTable)
+		F.Intrinsic.Control.CallSub(CheckLongPart)
+		
+		F.Intrinsic.Control.CallSub(RefreshScreen)
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.Main.End
+
+Program.Sub.Form_UnLoad.Start
+	F.Intrinsic.Control.Try
+	
+		F.Intrinsic.Control.If(V.Global.bLoadData)
+			F.Intrinsic.Control.CallSub(Serialize)
+		F.Intrinsic.Control.EndIf
+		
+		F.ODBC.Connection!con.Close()
+		F.Intrinsic.Control.End()
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.CheckPermissions.Start
+	V.Local.bEditWO.Declare()
+	
+	F.Intrinsic.Control.Try
+	
+		' If user has access to WO > New or WO > Open, then they have access to EditWO.
+		F.Global.Security.CheckUserAccessIPM(636, 527, V.Local.bEditWO) ' New
+		F.Intrinsic.Control.If(V.Local.bEditWO, =, False)
+			F.Global.Security.CheckUserAccessIPM(635, 527, V.Local.bEditWO) ' Open
+		F.Intrinsic.Control.EndIf
+		
+		' Also, if user belongs to group "EditWO", then they also have access.
+		F.Intrinsic.Control.If(V.Local.bEditWO, =, False)
+			F.Global.Security.IsInGroup(V.Caller.User, "EditWO", V.Caller.CompanyCode, V.Local.bEditWO)
+		F.Intrinsic.Control.EndIf
+	
+		Gui.F_WO.optEdit.Enabled(V.Local.bEditWO)
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.CheckPermissions.End
+
+Program.Sub.SetAnchors.Start
+	' 0 - None
+	' 1 - Top
+	' 2 - Bottom
+	' 4 - Left
+	' 8 - Right
+
+	F.Intrinsic.Control.Try
+	
+		Gui.F_WO.picGSSLogo.Anchor(1)
+		Gui.F_WO.lblStatus.Anchor(5)
+		Gui.F_WO.progressBarStatus.Anchor(5)
+		Gui.F_WO.framePermissions.Anchor(9)
+		Gui.F_WO.GsGCWO.Anchor(15)
+	
+	F.Intrinsic.Control.Catch
+		
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.SetAnchors.End
+
+Program.Sub.SetContextMenu.Start
+	F.Intrinsic.Control.Try
+	
+		Gui.F_WO..ContextMenuCreate("ctxWO")
+		Gui.F_WO.GsGCWO.ContextMenuAttach("ctxWO")
+		
+		Gui.F_WO..ContextMenuAddItem("ctxWO", "Refresh", 0, "Refresh")
+		Gui.F_WO..ContextMenuAddItem("ctxWO", "Export", 0, "Export")
+		Gui.F_WO..ContextMenuAddItem("ctxWO", "ResetColumns", 0, "Reset Columns")
+		
+		Gui.F_WO..ContextMenuSetItemEventHandler("ctxWO", "Refresh", "ContextMenuRefresh")
+		Gui.F_WO..ContextMenuSetItemEventHandler("ctxWO", "Export", "ContextMenuExport")
+		Gui.F_WO..ContextMenuSetItemEventHandler("ctxWO", "ResetColumns", "ContextMenuReset")
+		
+	F.Intrinsic.Control.Catch
+		
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.SetContextMenu.End
+
+Program.Sub.ContextMenuRefresh.Start
+	F.Intrinsic.Control.CallSub(RefreshScreen)
+	
+Program.Sub.ContextMenuRefresh.End
+
+Program.Sub.ContextMenuExport.Start
+	V.Local.bExcel.Declare()
+	V.Local.sFileExtension.Declare()
+	V.Local.sFileExport.Declare()
+	V.Local.bFileLocked.Declare()
+	V.Local.sMsg.Declare()
+
+	F.Intrinsic.Control.Try
+	
+		' If current machine has Excel, then prepare to export a .xlsx.
+		' Else, prepare to export a .csv.
+		F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+		F.Intrinsic.Control.If(V.Local.bExcel)
+			V.Local.sFileExtension.Set("xlsx")
+			F.Intrinsic.String.Build("{0}\GCG_6132_Export.xlsx", V.Caller.LocalGssTempDir, V.Local.sFileExport)
+		F.Intrinsic.Control.Else
+			V.Local.sFileExtension.Set("csv")
+			F.Intrinsic.String.Build("{0}\GCG_6132_Export.csv", V.Caller.LocalGssTempDir, V.Local.sFileExport)
+		F.Intrinsic.Control.EndIf
+		
+		' If file is locked, then error.
+		' Else, do the export.
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}", V.Ambient.NewLine, V.Local.sFileExport, V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg, "File In Use")
+		F.Intrinsic.Control.Else
+			Gui.F_WO.GsGCWO.Export(V.Local.sFileExport, V.Local.sFileExtension)
+			F.Intrinsic.Task.ShellExec(0, "", V.Local.sFileExport, "", "", 1)
+		F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.ContextMenuExport.End
+
+Program.Sub.ContextMenuReset.Start
+	F.Intrinsic.Control.Try
+		
+		' Delete the saved serializations.
+		F.Global.Registry.AddValue(V.Caller.User , V.Caller.CompanyCode, "gvWOs", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, "")
+		F.Global.Registry.AddValue(V.Caller.User , V.Caller.CompanyCode, "gvMatl", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, "")
+		F.Global.Registry.AddValue(V.Caller.User , V.Caller.CompanyCode, "gvMatlPoLines", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, "")
+		F.Global.Registry.AddValue(V.Caller.User , V.Caller.CompanyCode, "gvLbr", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, "")
+		F.Global.Registry.AddValue(V.Caller.User , V.Caller.CompanyCode, "gvOut", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, "")
+		
+		' Prevent RefreshScreen from doing Serialize.
+		V.Global.bLoadData.Set(False)
+		
+		F.Intrinsic.Control.CallSub(RefreshScreen)
+	
+	F.Intrinsic.Control.Catch
+		
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.ContextMenuReset.End
+
+Program.Sub.CheckTable.Start
+	V.Local.bExists.Declare()
+	
+	F.Intrinsic.Control.Try
+	
+		Gui.F_WO.lblStatus.Caption("Checking Database Table....")
+	
+		F.ODBC.Connection!con.TableExists("GCG_6132_WO_NOTES", V.Local.bExists)
+		F.Intrinsic.Control.If(V.Local.bExists, =, False)
+			F.ODBC.Connection!con.Execute("CREATE TABLE GCG_6132_WO_NOTES(JS CHAR(9) NOT NULL,JOB CHAR(6),SUFFIX CHAR(3),NOTES LONGVARCHAR,PRIMARY KEY (JS));")
+			F.ODBC.Connection!con.Execute("CREATE INDEX GCG_6132_WO_NOTES01 USING 1 ON GCG_6132_WO_NOTES(JOB);")
+			F.ODBC.Connection!con.Execute("CREATE INDEX GCG_6132_WO_NOTES02 USING 2 ON GCG_6132_WO_NOTES(SUFFIX);")
+		F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.CheckTable.End
+
+Program.Sub.CheckLongPart.Start
+	F.Intrinsic.Control.Try
+	
+		F.Global.General.ReadOption("400861", 0, False, "0000", V.Global.bLongPart)
+		F.Intrinsic.Control.If(V.Global.bLongPart, =, False)
+			F.Global.General.ReadOption("400861", 0, False, "0004", V.Global.bLongPart)
+		F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+	
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.CheckLongPart.End
+
+Program.Sub.RefreshScreen.Start
+	F.Intrinsic.Control.Try
+	
+		F.Intrinsic.Control.If(V.Global.bLoadData)
+		
+			F.Intrinsic.Control.CallSub(Serialize)
+			Gui.F_WO.GsGCWO.ClearRows("gvMatlPoLines")
+			Gui.F_WO.GsGCWO.ClearRows("gvMatl")
+			Gui.F_WO.GsGCWO.ClearRows("gvLbr")
+			Gui.F_WO.GsGCWO.ClearRows("gvOut")
+			Gui.F_WO.GsGCWO.ClearRows("gvWOs")
+			
+		F.Intrinsic.Control.EndIf
+
+		F.Intrinsic.Control.BlockEvents()
+		F.Intrinsic.Control.CallSub(DisableScreen)
+		
+		F.Intrinsic.Control.CallSub(LoadDtDvWOs)
+		F.Intrinsic.Control.CallSub(LoadGvWOs)
+		F.Intrinsic.Control.CallSub(LoadDtDvGvMatl)
+		F.Intrinsic.Control.CallSub(LoadDtDvGvLbr)
+		F.Intrinsic.Control.CallSub(LoadDtDvGvOut)
+			
+		F.Intrinsic.Control.CallSub(EnableScreen)
+		F.Intrinsic.Control.UnBlockEvents()
+		
+		F.Intrinsic.Control.CallSub(Deserialize)
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.RefreshScreen.End
+
+Program.Sub.EnableScreen.Start
+	F.Intrinsic.Control.Try
+	
+		Gui.F_WO.GsGCWO.Visible(True)
+		Gui.F_WO.framePermissions.Enabled(True)
+		Gui.F_WO.lblStatus.Visible(False)
+		Gui.F_WO.progressBarStatus.Visible(False)
+	
+	F.Intrinsic.Control.Catch
+		
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.EnableScreen.End
+
+Program.Sub.DisableScreen.Start
+	F.Intrinsic.Control.Try
+	
+		Gui.F_WO.GsGCWO.Visible(False)
+		Gui.F_WO.framePermissions.Enabled(False)
+	
+	F.Intrinsic.Control.Catch
+
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.DisableScreen.End
+
+Program.Sub.Serialize.Start
+	V.Local.sSerialize.Declare()
+	
+	F.Intrinsic.Control.Try
+		f.Data.DataView.SetSort("dtWOs","dvWOs","Parent_date asc, JOB ASC,DATE_DUE ASC, SUFFIX ASC")
+		gui.F_WO.GsGCWO.ClearSorting("gvWOs")
+		' gvWOs
+		Gui.F_WO.GsGCWO.Serialize("gvWOs", V.Local.sSerialize)
+		F.Global.Registry.AddValue(V.Caller.User, V.Caller.CompanyCode, "gvWOs", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, V.Local.sSerialize)
+		
+		' gvMatl
+		Gui.F_WO.GsGCWO.Serialize("gvMatl", V.Local.sSerialize)
+		F.Global.Registry.AddValue(V.Caller.User, V.Caller.CompanyCode, "gvMatl", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, V.Local.sSerialize)
+		
+		' gvMatlPoLines
+		Gui.F_WO.GsGCWO.Serialize("gvMatlPoLines", V.Local.sSerialize)
+		F.Global.Registry.AddValue(V.Caller.User, V.Caller.CompanyCode, "gvMatlPoLines", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, V.Local.sSerialize)
+		
+		' gvLbr
+		Gui.F_WO.GsGCWO.Serialize("gvLbr", V.Local.sSerialize)
+		F.Global.Registry.AddValue(V.Caller.User, V.Caller.CompanyCode, "gvLbr", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, V.Local.sSerialize)
+		
+		' gvOut
+		Gui.F_WO.GsGCWO.Serialize("gvOut", V.Local.sSerialize)
+		F.Global.Registry.AddValue(V.Caller.User, V.Caller.CompanyCode, "gvOut", 6132, 1000, False, "Serialize", False, 0, -999.0, 1/1/1980, 12:00:00 AM, V.Local.sSerialize)
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.Serialize.End
+
+Program.Sub.Deserialize.Start
+	V.Local.sSerialize.Declare()
+
+	F.Intrinsic.Control.Try
+		
+		' Delete old registry records
+		F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode ,"gvWOs", 6132, 0, 5, "", V.Local.sSerialize)
+		F.Intrinsic.Control.If(V.Local.sSerialize, <>, "")
+			F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon, V.Ambient.Cuser, V.Ambient.Cpass)
+			F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 6132 And Seq < 1000;")
+			F.ODBC.Connection!common.Close()
+		F.Intrinsic.Control.EndIf
+	
+		' gvWOs
+		F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode, "gvWOs", 6132, 1000, 6, "", V.Local.sSerialize)
+		F.Intrinsic.Control.If(V.Local.sSerialize.Trim, <>, "")
+			Gui.F_WO.GsGCWO.Deserialize(V.Local.sSerialize)
+		F.Intrinsic.Control.EndIf
+		
+		' gvMatl
+		F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode, "gvMatl", 6132, 1000, 6, "", V.Local.sSerialize)
+		F.Intrinsic.Control.If(V.Local.sSerialize.Trim, <>, "")
+			Gui.F_WO.GsGCWO.Deserialize(V.Local.sSerialize)
+		F.Intrinsic.Control.EndIf
+		
+		' gvMatlPoLines
+		F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode, "gvMatlPoLines", 6132, 1000, 6, "", V.Local.sSerialize)
+		F.Intrinsic.Control.If(V.Local.sSerialize.Trim, <>, "")
+			Gui.F_WO.GsGCWO.Deserialize(V.Local.sSerialize)
+		F.Intrinsic.Control.EndIf
+		
+		' gvLbr
+		F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode, "gvLbr", 6132, 1000, 6, "", V.Local.sSerialize)
+		F.Intrinsic.Control.If(V.Local.sSerialize.Trim, <>, "")
+			Gui.F_WO.GsGCWO.Deserialize(V.Local.sSerialize)
+		F.Intrinsic.Control.EndIf
+		
+		' gvOut
+		F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode, "gvOut", 6132, 1000, 6, "", V.Local.sSerialize)
+		F.Intrinsic.Control.If(V.Local.sSerialize.Trim, <>, "")
+			Gui.F_WO.GsGCWO.Deserialize(V.Local.sSerialize)
+		F.Intrinsic.Control.EndIf
+		gui.F_WO.GsGCWO.ClearSorting("gvWOs")
+		f.Data.DataView.SetSort("dtWOs","dvWOs","Parent_date asc, JOB ASC,DATE_DUE ASC, SUFFIX ASC")
+	
+	F.Intrinsic.Control.Catch
+		
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.LoadDtDvWOs.Start
+	V.Local.iCnt.Declare()
+	V.Local.iProgress.Declare()
+	V.Local.sSQL.Declare()
+	V.Local.sRet.Declare()
+	V.Local.sJob.Declare()
+	V.Local.sSuffix.Declare()
+	V.Local.sPrintedAndReleased.Declare()
+	V.Local.fEstHrs.Declare()
+	V.Local.fRemHrs.Declare()
+	V.Local.fPcsRem.Declare()
+	V.Local.sOper.Declare()
+	V.Local.bDictExists.Declare()
+	v.Local.sFilter.Declare()
+
+	F.Intrinsic.Control.Try
+	
+		F.Intrinsic.Control.If(V.DataTable.dtWOs.Exists, =, True)
+			F.Data.DataTable.Close("dtWOs")
+		F.Intrinsic.Control.EndIf
+	
+		F.Data.Dictionary.Exists("dIndirect", V.Local.bDictExists)
+		F.Intrinsic.Control.If(V.Local.bDictExists, =, True)
+			F.Data.Dictionary.Close("dIndirect")
+		F.Intrinsic.Control.EndIf
+		
+		V.Global.bLoadData.Set(True)
+		
+		F.Intrinsic.Control.If(V.Caller.GSSVersion, =, "2016.1", OR, V.Caller.GSSVersion, =, "2016.2")
+		
+			V.Local.sPrintedAndReleased.Set("CASE When FLAG_WO_PRTD = 'Y' OR FLAG_WO_PRTD = 'R' THEN CONVERT(1,SQL_BIT) WHEN FLAG_WO_PRTD !='Y' Or Flag_WO_PRTD != 'R' Then convert(0,SQL_BIT) END AS PRINTED, CONVERT(CASE WHEN FLAG_WO_PRTD = 'Y' THEN 0 WHEN FLAG_WO_PRTD = 'X' THEN 1 WHEN FLAG_WO_PRTD = '' THEN 0 WHEN FLAG_WO_PRTD = 'R' THEN 1 END,SQL_BIT) AS RELEASED")
+			
+		F.Intrinsic.Control.Else
+		
+			V.Local.sPrintedAndReleased.Set("CONVERT(CASE WHEN FLAG_WO_PRTD = 'Y' THEN 1 WHEN FLAG_WO_PRTD = 'X' THEN 0 WHEN FLAG_WO_PRTD = '' THEN 0 WHEN FLAG_WO_PRTD = 'R' THEN 1 END,SQL_BIT) AS PRINTED, CASE WHEN A.FLAG_WO_RELEASED ='Y' THEN CONVERT(1,SQL_BIT) ELSE CONVERT (0, SQL_BIT) END AS RELEASED")
+			
+		F.Intrinsic.Control.EndIf
+		
+		F.Intrinsic.String.Build("SELECT '' AS Plus, {0}, CASE WHEN A.FLAG_HOLD = 'Y' THEN CONVERT(1,SQL_BIT) WHEN A.FLAG_HOLD = 'N' THEN CONVERT(0,SQL_BIT) ELSE CONVERT(0,SQL_BIT) END AS FLAG_HOLD,A.JOB, A.SUFFIX,isNumeric(a.suffix) as Numero,CONCAT(a.job,A.suffix) as JobKey, A.PROJECT, PHASE, DESCR, NAME_CUSTOMER,a.customer_po,concat(a.Sales_order,a.Sales_order_line) as SO_LINE,concat(a.Sales_order,Concat('-',a.Sales_order_line)) as O_LINE,'' As SO_NOTES, COALESCE(PART,'') AS PART, '' As DISPLAY_PART, LOCATION,CAST(1 AS bit) AS XPROC,CAST(1 AS bit) AS OPROC, PRODUCT_LINE, DESCRIPTION, DATE_START,date_due as Parent_date, DATE_DUE, CONVERT(0,SQL_FLOAT) AS EST_HRS, NUM_HOURS AS ACT_HRS, CONVERT(0,SQL_FLOAT) AS REM_HRS, '' AS OPER, QTY_ORDER, QTY_ORDER - QTY_COMPLETED AS PCS_REM, C.NOTES, CONCAT(A.JOB,A.SUFFIX) AS JS, CONVERT(0,SQL_BIT) AS IND_FLAG FROM V_JOB_HEADER A LEFT JOIN V_CUSTOMER_MASTER B ON A.CUSTOMER = B.CUSTOMER LEFT JOIN GCG_6132_WO_NOTES C ON A.JOB = C.JOB AND A.SUFFIX = C.SUFFIX LEFT JOIN PROJECT_MASTER D ON A.PROJECT = D.PROJECT WHERE A.DATE_CLOSED = '1900-1-1' ORDER BY DATE_DUE, A.JOB, A.SUFFIX;", V.Local.sPrintedAndReleased, V.Local.sSql)
+		F.Data.DataTable.CreateFromSQL("dtWOs", "con", V.Local.sSQL, True)
+	
+		F.Data.DataTable.AddDisplayPartColumn("dtWOs", 0, "PART", "DISPLAY_PART")
+	
+		Gui.F_WO.lblStatus.Visible(True)
+		Gui.F_WO.progressBarStatus.Visible(True)
+		Gui.F_WO.lblStatus.Caption("Loading Work Orders....")
+		Gui.F_WO.progressBarStatus.Min(0)
+		Gui.F_WO.progressBarStatus.Max(V.DataTable.dtWOs.RowCount)
+		
+		
+		f.Data.Datatable.CreateFromSQL("DtAPSOpen","con","SELECT JSS,Job,sfx,SEQTYPE, SEQRES, PCSREMAIN,'' as LMO FROM APSV3_JBLINES WHERE COMPLDATE IS NULL ORDER BY JOB,SFX,SEQ;")
+		f.Data.DataView.create("DtAPSOpen","DtApsOpenVw",22,"","JOB ASC, SFX ASC")
+		
+		f.Data.Dictionary.CreateFromSQL("JobOpsLMODict","con","select Job + suffix + Seq,LMO from V_Job_operations")
+		f.Data.Dictionary.SetDefaultReturn("JobOpsLMODict","")
+		f.Data.Datatable.FillFromDictionary("DtAPSOpen","JobOpsLMODict","JSS","LMO")
+		f.Data.Dictionary.Close("JobOpsLMODict")
+		
+		
+		
+		f.Data.Datatable.CreateFromSQL("DtAPSEstHrs","con","SELECT job,sfx,CONVERT(SUM(HOURSORIG + INITSU), SQL_NUMERIC) AS EST_HRS FROM APSV3_JBLINES WHERE SEQTYPE = '1' GROUP BY JOB,SFX;")
+		f.Data.DataView.create("DtAPSEstHrs","DtAPSEstHrsVw",22,"","JOB ASC, SFX ASC")
+		
+		
+		F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtWOs.RowCount--, 1)
+		
+			F.Intrinsic.Math.Add(V.Local.iProgress, 1, V.Local.iProgress)
+			Gui.F_WO.progressBarStatus.Value(V.Local.iProgress)
+			
+			V.Local.sJob.Set(V.DataTable.dtWOs(V.Local.iCnt).JOB!FieldVal)
+			V.Local.sSuffix.Set(V.DataTable.dtWOs(V.Local.iCnt).SUFFIX!FieldVal)
+			
+			f.Intrinsic.String.Build("Job = '{0}' and sfx = '{1}' and LMO <> 'M'", v.Local.sJob,v.Local.sSuffix,v.Local.sFilter)
+			f.Data.DataView.SetFilter("DtAPSOpen","DtApsOpenVw",v.Local.sFilter)
+			F.Intrinsic.Control.If(v.DataView.DtAPSOpen!DtApsOpenVw.RowCount, =, 0)
+				V.Local.sOper.Set("WipToFG")
+				V.Local.FPcsRem.Set(0)
+			F.Intrinsic.Control.Else
+				V.Local.sOper.Set(v.DataView.DtAPSOpen!DtApsOpenVw(0).SEQRES!FieldValTrim)
+				V.Local.fPcsRem.Set(v.DataView.DtAPSOpen!DtApsOpenVw(0).PCSREMAIN!FieldValTrim)
+			F.Intrinsic.Control.EndIf
+			
+			f.Intrinsic.String.Build("Job = '{0}' and sfx = '{1}'", v.Local.sJob,v.Local.sSuffix,v.Local.sFilter)
+			f.Data.DataView.SetFilter("DtAPSEstHrs","DtAPSEstHrsVw",v.Local.sFilter)
+			f.Intrinsic.Control.If(v.DataView.DtAPSEstHrs!DtAPSEstHrsVw.RowCount,>,0)
+				v.Local.fEstHrs.Set(v.DataView.DtAPSEstHrs!DtAPSEstHrsVw(0).EST_HRS!FieldValFloat)
+			f.Intrinsic.Control.Else
+				v.Local.fEstHrs.Set(0)
+			f.Intrinsic.Control.EndIf
+			
+'			F.Intrinsic.String.Build("SELECT TOP 1 a.SEQTYPE, a.SEQRES, a.PCSREMAIN FROM APSV3_JBLINES a inner join V_job_operations b on a.JSS = b.job + b.suffix + b.seq WHERE a.COMPLDATE IS NULL AND a.JOB = '{0}' AND a.SFX = '{1}' AND b.LMO <> 'M'  ORDER BY a.JOB,a.SFX,a.SEQ;", V.Local.sJob, V.Local.sSuffix, V.Local.sSQL)
+'			F.ODBC.Connection!con.OpenLocalRecordsetRO("rstInfo", V.Local.sSQL)
+'				F.Intrinsic.Control.If(V.ODBC.con!rstInfo.EOF, =, True)
+'					V.Local.sOper.Set("WipToFG")
+'					V.Local.FPcsRem.Set(0)
+'				F.Intrinsic.Control.Else
+'					V.Local.sOper.Set(V.ODBC.con!rstInfo.FieldValTrim!SEQRES)
+'					V.Local.fPcsRem.Set(V.ODBC.con!rstInfo.FieldValFloat!PCSREMAIN)
+'				F.Intrinsic.Control.EndIf
+'			F.ODBC.con!rstInfo.Close
+'	
+'			F.Intrinsic.String.Build("SELECT CONVERT(SUM(HOURSORIG + INITSU), SQL_NUMERIC) AS EST_HRS FROM APSV3_JBLINES WHERE SEQTYPE = '1' AND JOB = '{0}' AND SFX = '{1}' GROUP BY JOB,SFX;",V.Local.sJob,V.Local.sSuffix,V.Local.sSQL)
+'			F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.fEstHrs)
+		
+			F.Intrinsic.Control.If(V.Local.fEstHrs, =, 0)
+				V.Local.fEstHrs.Set(0.0000)
+				V.Local.fRemHrs.Set(0.0000)
+			F.Intrinsic.Control.ElseIf(V.DataTable.dtWOs(V.Local.iCnt).ACT_HRS!FieldValFloat, >, V.Local.fEstHrs)
+				V.Local.fRemHrs.Set(0.0000)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.Math.Sub(V.Local.fEstHrs, V.DataTable.dtWOs(V.Local.iCnt).ACT_HRS!FieldValFloat, V.Local.fRemHrs)
+			F.Intrinsic.Control.EndIf
+			
+			F.Intrinsic.Control.If(V.Local.sOper, =, "WipToFG")
+				V.Local.fRemHrs.Set(0.0000)
+			F.Intrinsic.Control.EndIf
+	
+			F.Data.DataTable.SetValue("dtWOs", V.Local.iCnt, "EST_HRS", V.Local.fEstHrs, "REM_HRS", V.Local.fRemHrs, "OPER", V.Local.sOper)
+
+		F.Intrinsic.Control.Next(V.Local.iCnt)
+		f.Data.Datatable.Close("DtAPSOpen")
+		f.Data.Datatable.Close("DtAPSEstHrs")
+		
+		
+		' If a row's JS was found in IND_LBR_ACCTS, then remove it for being Indirect.
+		F.Data.Dictionary.CreateFromSQL("dIndirect", "con", "SELECT DISTINCT CONCAT(job, suffix) AS JS, CONVERT(IF('' = '', 1 ,0), SQL_BIT) FROM ind_lbr_accts;")
+		F.Data.Dictionary.SetDefaultReturn("dIndirect", False)
+		F.Data.DataTable.FillFromDictionary("dtWOs", "dIndirect", "JS", "IND_FLAG")
+		
+		
+		'f.Data.DataView.Create("dtWOs","DV_ParentDue",22,"Suffix = '000' or Numero = 0","job asc,Date_due asc")
+		f.Data.DataView.Create("dtWOs","DV_ParentDue",22,"Suffix = '000'","job asc,Date_due asc")
+		f.Data.Dictionary.CreateFromDataView("ParentDateDict","DtWos","DV_ParentDue","JOB","DATE_DUE")
+		f.Data.DataView.Close("dtWOs","DV_ParentDue")
+		f.Data.Dictionary.SetDefaultReturn("ParentDateDict","1900-01-01")
+		
+		f.Data.Datatable.FillFromDictionary("dtWOs","ParentDateDict","JOB","Parent_date")
+		f.Data.Dictionary.Close("ParentDateDict")
+		
+		F.Data.DataView.Create("dtWOs", "dvWOs" ,22, "IND_FLAG <> True", "Parent_date asc, JOB ASC,DATE_DUE ASC, SUFFIX ASC")
+		
+		
+		
+		
+		
+		f.Data.Dictionary.CreateFromSQL("XprocDict","Con","Select distinct CONCAT(J1.JOB,'000') AS JOBKEY, CAST(1 AS bit) AS XPROC from V_JOB_OPERATIONS J1 inner Join V_Job_header J2 on j1.job = j2.job and j1.suffix = j2.suffix  WHERE J1.LMO = 'L' and J1.PART IN ('1TRK','2TRK') and J2.DATE_CLOSED = '1900-1-1' union Select distinct CONCAT(J1.JOB,J1.Suffix) AS JOBKEY, CAST(1 AS bit) AS XPROC from V_JOB_OPERATIONS J1 inner Join V_Job_header J2 on j1.job = j2.job and j1.suffix = j2.suffix  WHERE J1.LMO = 'L' and J1.PART IN ('1TRK','2TRK') and J2.DATE_CLOSED = '1900-1-1'")
+		f.Data.Dictionary.SetDefaultReturn("XprocDict","False")
+		f.Data.Datatable.FillFromDictionary("dtWOs","XprocDict","JobKey","XPROC")
+		f.Data.Dictionary.Close("XprocDict")
+		
+		f.Data.Dictionary.CreateFromSQL("OprocDict","Con","Select distinct CONCAT(J1.JOB,'000') AS JOBKEY, CAST(1 AS bit) AS OPROC from V_JOB_OPERATIONS J1 inner Join V_Job_header J2 on j1.job = j2.job and j1.suffix = j2.suffix  WHERE J1.LMO = 'O' and J2.DATE_CLOSED = '1900-1-1' and J1.SEQ < 995000 Union Select distinct CONCAT(J1.JOB,J1.Suffix) AS JOBKEY, CAST(1 AS bit) AS OPROC from V_JOB_OPERATIONS J1 inner Join V_Job_header J2 on j1.job = j2.job and j1.suffix = j2.suffix  WHERE J1.LMO = 'O' and J2.DATE_CLOSED = '1900-1-1' and J1.SEQ < 995000")
+		f.Data.Dictionary.SetDefaultReturn("OprocDict","False")
+		f.Data.Datatable.FillFromDictionary("dtWOs","OprocDict","JobKey","OPROC")
+		f.Data.Dictionary.Close("OprocDict")
+		
+'		f.Data.DataTable.AddExpressionColumn("dtWOs","ProcLoc","String","IIF(LOCATION = '02' and XPROC = false,'02',IIF(Location = '02' and XPROC = true,'S to N',IIF(Location = '01' and XPROC = False,'01',IIF(Location = '01' and XPROC = true,'N to S',''))))")
+		f.Data.DataTable.AddExpressionColumn("dtWOs","ProcLoc","String","IIF(LOCATION = '02' and XPROC = false,'02',IIF(Location = '02' and XPROC = true,'N to S',IIF(Location = '01' and XPROC = False,'01',IIF(Location = '01' and XPROC = true,'S to N',''))))")
+		f.Intrinsic.Control.If(v.DataTable.dtOutProc.Exists)
+			f.Data.Datatable.Close("dtOutProc")
+		f.Intrinsic.Control.EndIf
+		f.Data.Datatable.CreateFromSQL("dtOutProc","Con","Select j1.Job, j1.Suffix, j1.Seq,J1.Description,J1.Date_Start,j1.Flag_Closed from V_JOB_OPERATIONS J1 inner Join V_Job_header J2 on j1.job = j2.job and j1.suffix = j2.suffix  WHERE J1.LMO = 'O' and J2.DATE_CLOSED = '1900-1-1' and J1.SEQ < 995000 order by j1.Job,j1.suffix", True)
+		
+		'CUSTOMER NOTES fro ARC 4167
+		F.Data.Dictionary.CreateFromSQL("dictNotes","con","Select Cast(Concat(SO,SOLINE) as CHAR(10)),RTrim(Notes) as Notes From GAB_4167_SO_NOTES;")
+		F.Data.Dictionary.SetDefaultReturn("dictNotes","")
+		F.Data.DataTable.FillFromDictionary("DtWos","dictNotes","SO_LINE","SO_NOTES")
+		F.Data.Dictionary.Close("dictNotes")
+		
+		f.Data.DataView.Create("dtOutProc","dtOutProcVw",22)
+		f.Intrinsic.Control.CallSub(LoadGVOutProc)
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.LoadDtDvWOs.End
+
+Program.Sub.LoadGVOutProc.Start
+		Gui.fOutProc.GsGCOPROC.AddGridViewFromDataView("GvOutProc", "dtOutProc", "dtOutProcVw")
+		
+
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "JOB", "Caption", "Job ")
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "SUFFIX", "Caption", "Suffix ")
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Seq", "Caption", "Sequence ")
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Description", "Caption", "Description ")
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Date_start", "Caption", "Ship By Date ")
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Flag_closed", "Caption", "Closed? ")
+		
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "JOB", "MinWidth", 50)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "SUFFIX", "MinWidth", 35)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Seq", "MinWidth", 50)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Description", "MinWidth", 200)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Date_start", "MinWidth", 75)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Flag_closed", "MinWidth", 50)
+		
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "JOB", "HeaderFontBold", True)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "SUFFIX", "HeaderFontBold", True)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Seq", "HeaderFontBold", True)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Description", "HeaderFontBold", True)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Date_start", "HeaderFontBold", True)
+		Gui.fOutProc.GsGCOPROC.SetColumnProperty("GvOutProc", "Flag_closed", "HeaderFontBold", True)
+		
+		
+		
+		Gui.fOutProc.GsGCOPROC.MainView("GvOutProc")
+Program.Sub.LoadGVOutProc.End
+
+Program.Sub.LoadGvWOs.Start
+	F.Intrinsic.Control.Try
+	
+		Gui.F_WO.GsGCWO.AddGridViewFromDataView("gvWOs", "dtWOs", "dvWOs")
+		Gui.F_WO.GsGCWO.MainView("gvWOs")
+		
+		Gui.F_WO.GsGCWO.SuspendLayout()
+		
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "MultiSelect", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "AllowSort", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "AllowFilter", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "OptionsDetailShowDetailTabs", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "OptionsViewShowGroupPanel", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "EnableAppearanceOddRow", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvWOs", "OptionsMenuShowAutoFilterRowItem", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Numero", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JobKey", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "IND_FLAG", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PART", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Plus", "ShowCaption", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_LINE", "Visible", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "Caption", "Printed")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "RELEASED", "Caption", "Released")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "FLAG_HOLD", "Caption", "On Hold")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "Caption", "Job ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "Caption", "Suffix ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROJECT", "Caption", "Project ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PHASE", "Caption", "Phase ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCR", "Caption", "Project Description")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NAME_CUSTOMER", "Caption", "Cust. Name")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "O_LINE", "Caption", "SO Line")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Customer_PO", "Caption", "Cust. PO")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DISPLAY_PART", "Caption", "Part ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "Caption", "Loc")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "XPROC", "Caption", "XPROC")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPROC", "Caption", "Outside Proc")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ProcLoc", "Caption", "ProcLoc")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRODUCT_LINE", "Caption", "PL")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCRIPTION", "Caption", "Description ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "Caption", "Start Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "Caption", "Parent Due Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "Caption", "Due Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "Caption", "Est. Hrs.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "Caption", "Act. Hrs.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "Caption", "Rem. Hrs.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPER", "Caption", "Current Operation")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER", "Caption", "Order Qty.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "Caption", "Pcs. Rem.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_NOTES", "Caption", "SO Notes ")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NOTES", "Caption", "Notes ")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Plus", "Width", 0)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "MinWidth", 25)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "RELEASED", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "FLAG_HOLD", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "MinWidth", 50)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "MinWidth", 25)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROJECT", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PHASE", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "XPROC", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPROC", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_LINE", "MinWidth", 150)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROCLOC", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCR", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NAME_CUSTOMER", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "O_Line", "MinWidth", 150)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Customer_PO", "MinWidth", 150)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DISPLAY_PART", "MinWidth", 150)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRODUCT_LINE", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCRIPTION", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "MinWidth", 100)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "MinWidth", 100)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "MinWidth", 100)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "MinWidth", 95)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "MinWidth", 95)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "MinWidth", 95)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPER", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER"," MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NOTES", "MinWidth", 300)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_NOTES", "MinWidth", 300)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "RELEASED", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "FLAG_HOLD", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "XPROC", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPROC", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROCLOC", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRODUCT_LINE", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "HeaderHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "RELEASED", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "FLAG_HOLD", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "XPROC", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPROC", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROCLOC", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRODUCT_LINE", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "CellHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Plus", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "RELEASED", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "FLAG_HOLD", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROJECT", "Fixed", "Left")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PHASE", "Fixed", "Left")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROJECT", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PHASE", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCR", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NAME_CUSTOMER", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Customer_PO", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DISPLAY_PART", "ReadOnly" ,True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "XPROC", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPROC", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROCLOC", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRODUCT_LINE", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCRIPTION", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPER", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NOTES", "ReadOnly", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_NOTES", "ReadOnly", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRINTED", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "RELEASED", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "FLAG_HOLD", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROJECT", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PHASE", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCR", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "XPROC", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPROC", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PROCLOC", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NAME_CUSTOMER", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "O_LINE", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Customer_PO", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DISPLAY_PART", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PRODUCT_LINE", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DESCRIPTION", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "OPER", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "AllowEdit", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NOTES", "AllowEdit", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_NOTES", "AllowEdit", True)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SO_NOTES", "CellBackColor", "LightYellow")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "NOTES", "CellBackColor", "LightYellow")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "JOB", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "SUFFIX", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DISPLAY_PART", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "LOCATION", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_START", "DisplayCustomDatetime", "d")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DATE_DUE", "DisplayCustomDatetime", "d")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "Parent_date", "DisplayCustomDatetime", "d")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "EST_HRS", "DisplayCustomNumeric", n2)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "ACT_HRS", "DisplayCustomNumeric", n2)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "REM_HRS", "DisplayCustomNumeric", n2)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "QTY_ORDER", "DisplayCustomNumeric", n2)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "PCS_REM", "DisplayCustomNumeric", n2)
+		
+		Gui.F_WO.GsGCWO.AddSummaryItem("gvWOs", "EST_HRS", "EST_HRS", "SUM", "Total: ", "", n2)
+		Gui.F_WO.GsGCWO.AddSummaryItem("gvWOs", "ACT_HRS", "ACT_HRS", "SUM", "Total: ", "", n2)
+		Gui.F_WO.GsGCWO.AddSummaryItem("gvWOs", "REM_HRS", "REM_HRS", "SUM", "Total: ", "", n2)
+		
+		Gui.F_WO.GsGCWO.AddStyleFormatCondition("gvWOs","FLAG_HOLD","Hold","Equal","True")
+		Gui.F_WO.GsGCWO.SetStyleFormatConditionProperty("gvWOs","FLAG_HOLD","Hold","BackColor","Pink")
+		Gui.F_WO.GsGCWO.SetStyleFormatConditionProperty("gvWOs","FLAG_HOLD","Hold","ApplyToRow","True")
+		
+		F.Intrinsic.Control.If(V.Global.bLongPart)
+			Gui.F_WO.GsGCWO.SetColumnProperty("gvWOs", "DISPLAY_PART", "MinWidth", "250")
+		F.Intrinsic.Control.EndIf
+	
+		Gui.F_WO.GsGCWO.ResumeLayout()
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.LoadGvWOs.End
+
+Program.Sub.LoadDtDvGvMatl.Start
+	V.Local.i.Declare()
+	v.Local.sSQL.Declare
+	v.Local.iCnt.Declare
+	F.Intrinsic.Control.Try
+		
+		' Previous query.
+		' 	V_PO_LINES join is the thing that seemed to make some customers time out before the dashboard could load. There is a similar join in LoadDtDvGvOut.
+		
+		'F.Data.DataTable.CreateFromSQL("dtWOs$dtMatl","con","SELECT DISTINCT CONCAT(A.JOB,A.SUFFIX) AS JBSF,CONCAT(CONCAT(A.JOB,A.SUFFIX),A.SEQ) AS JSS,A.JOB AS JOB1,A.SUFFIX AS SFX1,A.SEQ AS SEQ1,COALESCE(A.PART,'') AS PART1,'' As DISPLAY_PART1,C.LOCATION AS LOCATION1,A.DESCRIPTION AS DESCR,E.VENDOR,E.PURCHASE_ORDER,LEFT(E.RECORD_NO,3) AS LINE,IF(E.DATE_DUE_LINE = '1900-1-1',NULL,E.DATE_DUE_LINE) AS DATE_DUE_LINE,D.AMT_COST,B.PCSTOPROD,B.PCSCOMPL,B.PCSREMAIN,IF(D.QTY_ONHAND IS NULL,'0.0000',D.QTY_ONHAND) AS QTY_ONHAND,IF(D.QTY_ONORDER_PO IS NULL,'0.0000',D.QTY_ONORDER_PO) AS QTY_ONORDER_PO,IF(D.QTY_ONORDER_WO IS NULL,'0.0000',D.QTY_ONORDER_WO) AS QTY_ONORDER_WO,IF(D.QTY_REQUIRED IS NULL,'0.0000',D.QTY_REQUIRED) AS QTY_REQUIRED FROM JOB_OPERATIONS A LEFT JOIN APSV3_JBLINES B ON JSS = B.JSS LEFT JOIN JOB_HEADER C ON A.JOB = C.JOB AND A.SUFFIX = C.SUFFIX LEFT JOIN INVENTORY_MSTR D ON A.PART = D.PART AND C.LOCATION = D.LOCATION LEFT JOIN V_PO_LINES E ON A.JOB = E.JOB AND A.SUFFIX = E.SUFFIX AND A.SEQ = E.SEQUENCE WHERE A.LMO = 'M' AND A.SEQ NOT IN ('995000','998000') AND JBSF IN (SELECT CONCAT(JOB,SUFFIX) AS JBSFX FROM V_JOB_HEADER WHERE DATE_CLOSED = '1900-1-1') ORDER BY SEQ1;",True)
+		
+		' New query.
+		'	Delete V_PO_LINES join to eliminate timeout. Add it later as a subgrid, especially when (in rare cases) a customer may have multiple PoLines for a single Sequence.
+		'	Add new join for V_INVENTORY_COST to grab its COST column to replace INVENTORY_MSTR.AMT_COST since that one is obsolete.
+		'	Changed IF(... IS NULL) to ISNULL().
+		'	Explicitly CAST qty values to DOUBLE.
+		'	ORDER BY jss instead for actually correct row coloring.
+		'	Aliases renamed for readability.
+		
+		'=======================================================================================================================================================
+'		v.Local.sJS.Declare
+'		
+'		f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.dtWOs.RowCount--,1)
+'			f.Intrinsic.String.Build("{0},{1}",v.Local.sJS,v.DataTable.dtWOs(v.Local.iCnt).JS!FieldValTrim,v.Local.sJS)
+'		f.Intrinsic.Control.Next(v.Local.iCnt)
+'		Function.Intrinsic.Debug.InvokeDebugger
+'		Function.Intrinsic.Debug.Stop
+'		
+'		f.Intrinsic.String.Build("SELECT DISTINCT CONCAT(A.job, A.suffix) AS Matl_JS, CONCAT(CONCAT(A.job, A.suffix), A.seq) AS Matl_JSS, A.job AS Matl_Job, A.suffix AS Matl_Suffix, A.seq AS Matl_Sequence, COALESCE(A.part, '') AS Matl_Part, '' As Matl_DisplayPart, C.location AS Matl_Location, A.description AS Matl_Description, CAST(ISNULL(E.cost, 0.0) AS DOUBLE) AS Matl_InvCost, CAST(ISNULL(B.pcstoprod, 0.0) AS DOUBLE) AS Matl_ApsPcsToProd, CAST(ISNULL(B.pcscompl, 0.0) AS DOUBLE) AS Matl_ApsPcsCompl, CAST(ISNULL(B.pcsremain, 0.0) AS DOUBLE) AS Matl_ApsPcsRemain, CAST(ISNULL(D.qty_onHand, 0.0) AS DOUBLE) AS Matl_InvQtyOnHand, ISNULL(D.qty_onorder_po, 0.0) AS Matl_InvQtyOnOrderPo, CAST(ISNULL(D.qty_onorder_wo, 0.0) AS DOUBLE) AS Matl_InvQtyOnOrderWo, CAST(ISNULL(D.qty_required, 0.0) AS DOUBLE) AS Matl_InvQtyRequired FROM job_operations A LEFT JOIN apsv3_jblines B ON Matl_JSS = B.JSS LEFT JOIN job_header C ON A.job = C.job AND A.suffix = C.suffix LEFT JOIN inventory_mstr D ON A.part = D.part AND C.location = D.location LEFT JOIN v_inventory_cost E ON A.part = E.part AND E.locn = C.Location WHERE A.LMO = 'M' AND A.seq NOT IN ('995000', '998000') AND Matl_JS IN ('{0}') ORDER BY A.job, A.suffix, A.seq;",v.Local.sJS,v.Local.sSQL)
+'		
+'		F.Data.DataTable.CreateFromSQL("dtWOs$dtMatl", "con",v.Local.sSQL,true)
+		'=========================================================================================================================================================
+		
+		F.Data.DataTable.CreateFromSQL("dtWOs$dtMatl", "con", "SELECT DISTINCT CONCAT(A.job, A.suffix) AS Matl_JS, CONCAT(CONCAT(A.job, A.suffix), A.seq) AS Matl_JSS, A.job AS Matl_Job, A.suffix AS Matl_Suffix, A.seq AS Matl_Sequence, COALESCE(A.part, '') AS Matl_Part, '' As Matl_DisplayPart, C.location AS Matl_Location, A.description AS Matl_Description, CAST(ISNULL(E.cost, 0.0) AS DOUBLE) AS Matl_InvCost, CAST(ISNULL(B.pcstoprod, 0.0) AS DOUBLE) AS Matl_ApsPcsToProd, CAST(ISNULL(B.pcscompl, 0.0) AS DOUBLE) AS Matl_ApsPcsCompl, CAST(ISNULL(B.pcsremain, 0.0) AS DOUBLE) AS Matl_ApsPcsRemain, CAST(ISNULL(D.qty_onHand, 0.0) AS DOUBLE) AS Matl_InvQtyOnHand, ISNULL(D.qty_onorder_po, 0.0) AS Matl_InvQtyOnOrderPo, CAST(ISNULL(D.qty_onorder_wo, 0.0) AS DOUBLE) AS Matl_InvQtyOnOrderWo, CAST(ISNULL(D.qty_required, 0.0) AS DOUBLE) AS Matl_InvQtyRequired FROM job_operations A LEFT JOIN apsv3_jblines B ON Matl_JSS = B.JSS LEFT JOIN job_header C ON A.job = C.job AND A.suffix = C.suffix LEFT JOIN inventory_mstr D ON A.part = D.part AND C.location = D.location LEFT JOIN v_inventory_cost E ON A.part = E.part AND E.locn = C.Location WHERE A.LMO = 'M' AND A.seq NOT IN ('995000', '998000') AND Matl_JS IN (SELECT CONCAT(job, suffix) AS JBSFX FROM v_job_header WHERE date_closed = '1900-01-01') ORDER BY A.job, A.suffix, A.seq;", True)
+		
+		F.Data.DataTable.AddDisplayPartColumn("dtWOs$dtMatl", 0, "Matl_Part", "Matl_DisplayPart")
+		
+'		v.Local.iCnt.Declare
+'		v.Local.iCnt2.Declare
+'		v.Local.iCnt3.Declare
+'		v.Local.bCheck.Declare(boolean,false)
+'		
+'		Function.Intrinsic.Debug.InvokeDebugger
+'		Function.Intrinsic.Debug.Stop
+'		f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.dtWOs$dtMatl.RowCount--,1)
+'		f.Intrinsic.Control.If(v.Local.bCheck,=,False,and,v.Local.iCnt,<>,0)
+'			f.Intrinsic.Math.Sub(v.Local.iCnt,1,v.Local.iCnt3)
+'			f.Intrinsic.UI.Msgbox(v.DataTable.dtWOs$dtMatl(v.Local.iCnt3).Matl_JS!FieldValTrim)
+'		f.Intrinsic.Control.EndIf
+'		v.Local.bCheck.Set(false)
+'			f.Intrinsic.Control.For(v.Local.iCnt2,0,v.DataTable.dtWOs.RowCount--,1)
+'				f.Intrinsic.Control.If(v.DataTable.dtWOs$dtMatl(v.Local.iCnt).Matl_JS!FieldValTrim,=,v.DataTable.dtWOs(v.Local.iCnt2).JS!FieldValTrim)
+'					v.Local.bCheck.Set(True)
+'				f.Intrinsic.Control.EndIf
+'			f.Intrinsic.Control.Next(v.Local.iCnt2)
+'		f.Intrinsic.Control.Next(v.Local.iCnt)
+'		Function.Intrinsic.Debug.InvokeDebugger
+'		Function.Intrinsic.Debug.Stop
+
+		'===============================FOR DEBUGGING==============================================
+		
+		v.Local.sFilter.Declare
+		
+		v.Local.sString.Declare
+		v.Local.sFile.Declare
+		f.Data.Datatable.AddColumn("dtWOs","Check","String")
+		f.Data.Datatable.SetValue("dtWOs",-1,"Check","Y")
+		f.Data.Dictionary.CreateFromDatatable("dCheck","dtWOs","JS","Check")
+		f.Data.Dictionary.SetDefaultReturn("dCheck","")
+		f.Data.Datatable.AddColumn("dtWOs$dtMatl","Check","String")
+		f.Data.Datatable.FillFromDictionary("dtWOs$dtMatl","dCheck","Matl_JS","Check")
+		v.Local.sFilter.Set("[Check] = ''")
+		
+		f.Data.DataView.Create("dtWOs$dtMatl","dvCheck",22,v.Local.sFilter,)
+		
+		f.Intrinsic.Control.If(v.DataView.dtWOs$dtMatl!dvCheck.RowCount,<>,0)
+			f.Data.DataView.ToDataTable("dtWOs","dvCheck","dtCheck")
+			f.Data.Datatable.AddColumn("dtCheck","Time","String")
+			f.Data.Datatable.SetValue("dtCheck",-1,"Check",v.Ambient.Date,"Time",v.Ambient.Time)
+			f.Intrinsic.String.Build("{0}6132_ParentTable.csv",V.Caller.GasDir,v.Local.sFile)
+			f.Data.Datatable.SaveToCSV("dtWOs",v.Local.sFile,true)
+			f.Intrinsic.String.Build("{0}6132_CheckTable.csv",V.Caller.GasDir,v.Local.sFile)
+			f.Data.Datatable.SaveToCSV("dtCheck",v.Local.sFile,true)
+			f.Intrinsic.String.Build("{0}6132_ChildTable.csv",V.Caller.GasDir,v.Local.sFile)
+			f.Data.Datatable.SaveToCSV("dtWOs$dtMatl",v.Local.sFile,true)
+			f.Data.Datatable.Close("dtCheck")
+		f.Intrinsic.Control.EndIf
+		
+	
+		f.Data.Dictionary.Close("dCheck")
+		f.Data.DataView.Close("dtWOs$dtMatl","dvCheck")
+		
+		f.Data.Datatable.RemoveColumn("dtWOs","Check")
+		f.Data.Datatable.RemoveColumn("dtWOs$dtMatl","Check")
+		
+		'==========================================================================================
+		
+		F.Data.DataTable.AddRelation("dtWOs", "JS", "dtWOs$dtMatl", "Matl_JS", "Material")
+		
+		F.Data.DataView.Create("dtWOs$dtMatl", "dvMatl")
+		Gui.F_WO.GsGCWO.AddGridViewFromDataView("gvMatl", "dtWOs", "dvMatl")
+
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "MultiSelect", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "OptionBehaviorEditable", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "AllowSort", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "AllowFilter", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "OptionsDetailShowDetailTabs", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "OptionsViewShowGroupPanel", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatl", "AllowColumnMoving", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_JS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_JSS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Job", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Suffix", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Part", "Visible", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Sequence", "VisibleIndex", 1)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_DisplayPart", "VisibleIndex", 2)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "VisibleIndex", 3)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Description", "VisibleIndex", 4)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvCost", "VisibleIndex", 5)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsToProd", "VisibleIndex", 6)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsCompl", "VisibleIndex", 7)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsRemain", "VisibleIndex", 8)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnHand", "VisibleIndex", 9)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderPo", "VisibleIndex", 10)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderWo", "VisibleIndex", 11)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyRequired", "VisibleIndex", 12)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Sequence", "Caption", "Seq.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_DisplayPart", "Caption", "Part")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "Caption", "Loc.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Description", "Caption", "Description")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvCost", "Caption", "Unit Cost")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsToProd", "Caption", "Qty. Req'd")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsCompl", "Caption", "Qty. Issued")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsRemain", "Caption", "Qty. Rem.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnHand", "Caption", "On Hand")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderPo", "Caption", "On Order PO")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderWo", "Caption", "On Order WO")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyRequired"," Caption", "Total Req'd")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Sequence", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_DisplayPart", "MinWidth", 150)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "MinWidth", 25)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Description", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvCost", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsToProd", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsCompl", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsRemain", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnHand", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderPo", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderWo", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyRequired", "MinWidth", 75)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Sequence", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvCost", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsToProd", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsCompl", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsRemain", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnHand", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderPo", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderWo", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyRequired", "HeaderHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Sequence", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvCost", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsToProd", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsCompl", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_ApsPcsRemain", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnHand", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderPo", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyOnOrderWo", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvQtyRequired", "CellHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Sequence", "Fixed", "Left")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_DisplayPart", "CellFontUnderline", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "CellFontUnderline", True)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_DisplayPart", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_Location", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_InvCost", "DisplayCustomNumeric", "$#,###,###,##0.0000")
+		
+		F.Intrinsic.Control.If(V.Global.bLongPart)
+			Gui.F_WO.GsGCWO.SetColumnProperty("gvMatl", "Matl_DisplayPart", "MinWidth", 250)
+		F.Intrinsic.Control.EndIf
+	
+		F.Intrinsic.Control.For(V.Local.i, 0, V.DataTable.dtWOs$dtMatl.RowCount--, 2)
+			Gui.F_WO.GsGCWO.SetRowAppearance("gvMatl", V.Local.i, "BackColor", "AliceBlue")
+		F.Intrinsic.Control.Next(V.Local.i)
+		
+		' Material subgrid loaded. Now load the MaterialPoLines data as a subgrid of this Material subgrid.
+		F.Intrinsic.Control.CallSub(LoadDtDvGvMatlPoLines)
+		
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.LoadDtDvGvMatl.End
+
+Program.Sub.LoadDtDvGvMatlPoLines.Start
+	F.Intrinsic.Control.Try
+		
+		' The "JSS IN ..." and "JS IN ..." clauses are necessary to match the Material subgrid's conditions so that all child rows have a corresponding parent row. Otherwise, it errors out.
+		F.Data.DataTable.CreateFromSQL("dtWOs$dtMatl$dtPoLines", "con", "SELECT CONCAT(P.job, P.suffix) AS Matl_PoLines_JS, CONCAT(CONCAT(P.job, P.suffix), P.sequence) AS Matl_PoLines_JSS, P.vendor AS Matl_PoLines_Vendor, CAST(IF(P.date_due_line = '1900-01-01', NULL, P.date_due_line) AS DATE) AS Matl_PoLines_DateDueLine, P.purchase_order AS Matl_PoLines_PoNumber, LEFT(P.record_no, 3) AS Matl_PoLines_PoLine, CAST(ISNULL(P.qty_order, 0) AS DOUBLE) AS Matl_PoLines_QtyOrder, CAST(ISNULL(P.qty_received, 0) AS DOUBLE) AS Matl_PoLines_QtyReceived, CAST(ISNULL(P.qty_order, 0) - ISNULL(P.qty_received, 0) AS DOUBLE) AS Matl_PoLines_QtyRemaining, CAST(IF(P.flag_recv_close = 'Y', 1, 0) AS BIT) AS Matl_PoLines_FlagClosed FROM v_po_lines P WHERE Matl_PoLines_JSS IN (SELECT DISTINCT CONCAT(CONCAT(O.job, O.suffix), O.seq) FROM v_job_operations O WHERE O.LMO = 'M' AND O.seq NOT IN ('995000','998000')) AND Matl_PoLines_JS IN (SELECT DISTINCT CONCAT(H.job, H.suffix) FROM v_job_header H WHERE H.date_closed = '1900-01-01') ORDER BY Matl_PoLines_JSS;", True)
+		
+		F.Data.DataTable.AddRelation("dtWOs$dtMatl", "Matl_JSS", "dtWOs$dtMatl$dtPoLines", "Matl_PoLines_JSS", "PO Lines")
+
+		F.Data.DataView.Create("dtWOs$dtMatl$dtPoLines", "dvMatlPoLines")
+		GUI.F_WO.GsGCWO.AddGridviewFromDataview("gvMatlPoLines", "dtWOs", "dvMatlPoLines")
+		
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "MultiSelect", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "OptionBehaviorEditable", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "AllowSort", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "AllowFilter", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "OptionsDetailShowDetailTabs", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "OptionsViewShowGroupPanel", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvMatlPoLines", "AllowColumnMoving", False)
+		GUI.F_WO.GsGCWO.SetGridviewProperty("gvMatlPoLines", "EnableAppearanceOddRow", True)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_JS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_JSS", "Visible", False)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_FlagClosed", "VisibleIndex", 1)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_Vendor", "VisibleIndex", 2)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoNumber", "VisibleIndex", 3)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoLine", "VisibleIndex", 4)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyOrder", "VisibleIndex", 5)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyReceived", "VisibleIndex", 6)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyRemaining", "VisibleIndex", 7)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_DateDueLine", "VisibleIndex", 8)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_FlagClosed", "Caption", "PO Closed")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_Vendor", "Caption", "Vendor")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoNumber", "Caption", "PO")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoLine", "Caption", "PO Line")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyOrder", "Caption", "PO Qty. Ord.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyReceived", "Caption", "PO Qty. Rec.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyRemaining", "Caption", "PO Qty. Rem.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_DateDueLine", "Caption", "PO Due Date")
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_FlagClosed", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_Vendor", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoNumber", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoLine", "MinWidth", 35)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyOrder", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyReceived", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyRemaining", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_DateDueLine", "MinWidth", 75)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_FlagClosed", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyOrder", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyReceived", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyRemaining", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_DateDueLine", "HeaderHAlignment", "Center")
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyOrder", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyReceived", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_QtyRemaining", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_DateDueLine", "CellHAlignment", "Center")
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoNumber", "CellFontUnderline",True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoLine", "CellFontUnderline",True)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoNumber", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_PoLine", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		
+		GUI.F_WO.GsGCWO.SetColumnProperty("gvMatlPoLines", "Matl_PoLines_DateDueLine", "DisplayCustomDatetime", "d")
+	
+	F.Intrinsic.Control.Catch
+
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+
+Program.Sub.LoadDtDvGvMatlPoLines.End
+
+Program.Sub.LoadDtDvGvLbr.Start
+	V.Local.i.Declare()
+
+	F.Intrinsic.Control.Try
+
+		F.Data.DataTable.CreateFromSQL("dtWOs$dtLbr", "con", "SELECT DISTINCT CONCAT(A.job, A.suffix) AS Lbr_JS, CONCAT(CONCAT(A.job, A.suffix), A.seq) AS Lbr_JSS, A.job AS Lbr_Job, A.suffix AS Lbr_Suffix, A.seq AS Lbr_Sequence, B.seqres AS Lbr_ApsWorkcenter, B.descr AS Lbr_ApsDescription, B.startdate AS Lbr_ApsStartDate, B.duedate AS Lbr_ApsDueDate, B.compldate AS Lbr_ApsComplDate, A.code_sort_oper AS Lbr_SortCode, B.overlap AS Lbr_ApsOverlap, B.nomach AS Lbr_ApsWcFactor, B.float AS Lbr_ApsFloat, B.hoursorig AS Lbr_ApsHrsOrig, B.hoursappl AS Lbr_ApsHrsAppl, B.hoursrem AS Lbr_ApsHrsRem, B.pcstoprod AS Lbr_ApsPcsToProd, B.pcscompl AS Lbr_ApsPcsCompl, B.pcsremain AS Lbr_ApsPcsRemain FROM job_operations A LEFT JOIN apsv3_jblines B ON Lbr_JSS = B.JSS WHERE A.LMO = 'L' AND A.seq NOT IN ('996000', '998500') AND Lbr_JS IN (SELECT CONCAT(job, suffix) AS JBSFX FROM v_job_header WHERE date_closed = '1900-01-01') ORDER BY A.job, A.suffix, A.seq;", True)
+		
+		F.Data.DataTable.AddRelation("dtWOs", "JS", "dtWOs$dtLbr", "Lbr_JS", "Labor")
+		
+		F.Data.DataView.Create("dtWOs$dtLbr", "dvLbr")
+		Gui.F_WO.GsGCWO.AddGridViewFromDataView("gvLbr", "dtWOs", "dvLbr")
+		
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "MultiSelect", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "OptionBehaviorEditable", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "AllowSort", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "AllowFilter", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "OptionsDetailShowDetailTabs", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "OptionsViewShowGroupPanel", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvLbr", "AllowColumnMoving", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_JS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_JSS", "Visible" ,False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Job", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Suffix"," Visible", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Sequence", "Caption", "Seq.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWorkcenter", "Caption", "WC")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDescription", "Caption", "Description")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsStartDate", "Caption", "Start Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDueDate", "Caption", "Due Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsComplDate", "Caption", "Compl. Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_SortCode", "Caption", "Sort Code")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsOverlap", "Caption", "Overlap")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWcFactor", "Caption", "WC Factor")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsFloat", "Caption", "Float")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsOrig", "Caption", "Est. Hrs.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsAppl", "Caption", "Act. Hrs.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsRem", "Caption", "Rem. Hrs.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsToProd", "Caption", "Order Qty.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsCompl", "Caption", "Comp. Qty.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsRemain", "Caption", "Rem. Qty.")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Sequence", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWorkcenter", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDescription", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsStartDate", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDueDate", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsComplDate", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_SortCode", "MinWidth", 100)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsOverlap", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWcFactor", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsFloat", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsOrig", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsAppl", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsRem", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsToProd", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsCompl", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsRemain", "MinWidth", 75)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Sequence", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsStartDate", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDueDate", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsComplDate", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsOverlap", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWcFactor", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsFloat", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsOrig", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsAppl", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsRem", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsToProd", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsCompl", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsRemain", "HeaderHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Sequence", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsStartDate", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDueDate", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsComplDate", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsOverlap", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWcFactor", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsFloat", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsOrig", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsAppl", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsRem", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsToProd", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsCompl", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsRemain", "CellHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_Sequence", "Fixed", "Left")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWorkcenter", "CellTrimming", "Character")
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsOverlap", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsWcFactor", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsFloat", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsOrig", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsAppl", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsHrsRem", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsToProd", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsCompl", "DisplayCustomNumeric", "#,###,###,##0.00")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsPcsRemain", "DisplayCustomNumeric", "#,###,###,##0.00")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsStartDate", "DisplayCustomDatetime", "d")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsDueDate", "DisplayCustomDatetime", "d")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvLbr", "Lbr_ApsComplDate", "DisplayCustomDatetime", "d")
+	
+		F.Intrinsic.Control.For(V.Local.i, 0, V.DataTable.dtWOs$dtLbr.RowCount--, 2)
+			Gui.F_WO.GsGCWO.SetRowAppearance("gvLbr", V.Local.i, "BackColor", "AliceBlue")
+		F.Intrinsic.Control.Next(V.Local.i)
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.LoadDtDvGvLbr.End
+
+Program.Sub.LoadDtDvGvOut.Start
+	V.Local.i.Declare()
+
+	F.Intrinsic.Control.Try
+		
+		' Previous query.
+		' 	V_PO_LINES join is the thing that seemed to make some customers time out before the dashboard could load. There is a similar join in LoadDtDvGvMatl.
+		
+		'F.Data.DataTable.CreateFromSQL("dtTemp","con","SELECT DISTINCT CONCAT(A.JOB,A.SUFFIX) AS JBSF,CONCAT(CONCAT(A.JOB,A.SUFFIX),A.SEQ) AS JSS,A.JOB,A.SUFFIX,A.SEQ,C.NAME_VENDOR,B.DESCR,B.STARTDATE,B.DUEDATE,B.COMPLDATE,D.PURCHASE_ORDER AS PURCHASE_ORDER2,LEFT(D.RECORD_NO,3) AS LINE2 FROM JOB_OPERATIONS A LEFT JOIN APSV3_JBLINES B ON JSS = B.JSS LEFT JOIN V_VENDOR_MASTER C ON B.OPCODE = C.VENDOR LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE WHERE A.LMO = 'O' AND A.SEQ <> '997000' AND JBSF IN (SELECT CONCAT(JOB,SUFFIX) AS JBSFX FROM V_JOB_HEADER WHERE DATE_CLOSED = '1900-1-1')  ORDER BY A.JOB,A.SUFFIX,A.SEQ;")
+		
+		' New query.
+		'	Delete V_PO_LINES join to eliminate timeout. Add that data later using dictionaries.
+		'	ORDER BY jss instead for actually correct row coloring.
+		'	Aliases renamed for readability.
+		
+		F.Data.DataTable.CreateFromSQL("dtWOs$dtOut", "con", "SELECT DISTINCT CONCAT(A.job, A.suffix) AS Out_JS, CONCAT(CONCAT(A.job, A.suffix), A.seq) AS Out_JSS, A.job AS Out_Job, A.suffix AS Out_Suffix, A.seq AS Out_Sequence, C.name_vendor AS Out_VendorName, B.descr AS Out_ApsDescription, B.startdate AS Out_ApsStartDate, B.duedate AS Out_ApsDueDate, B.compldate AS Out_ApsComplDate FROM job_operations A LEFT JOIN apsv3_jblines B ON Out_JSS = B.JSS LEFT JOIN v_vendor_master C ON B.opcode = C.vendor WHERE A.LMO = 'O' AND A.seq <> '997000' AND Out_JS IN (SELECT CONCAT(job, suffix) AS JBSFX FROM v_job_header WHERE date_closed = '1900-01-01') ORDER BY A.job, A.suffix, A.seq;", True)
+		
+		' Now, query V_PO_LINES directly. Make dictionaries to pair up JSS with PoNumber and PoLine. Then FillFromDictionary the main DT.
+		F.Data.DataTable.CreateFromSql("dtTemp", "con", "SELECT DISTINCT CONCAT(CONCAT(job, suffix), sequence) AS Out_JSS, purchase_order AS Out_PoNumber, LEFT(record_no, 3) AS Out_PoLine FROM v_po_lines;")
+		
+		F.Data.DataTable.AddColumn("dtWOs$dtOut", "Out_PoNumber", "String", "")
+		F.Data.Dictionary.CreateFromDataTable("dictTemp", "dtTemp", "Out_JSS", "Out_PoNumber")
+		F.Data.Dictionary.SetDefaultReturn("dictTemp", "")
+		F.Data.DataTable.FillFromDictionary("dtWOs$dtOut", "dictTemp", "Out_JSS", "Out_PoNumber")
+		F.Data.Dictionary.Close("dictTemp")
+		
+		F.Data.DataTable.AddColumn("dtWOs$dtOut", "Out_PoLine", "String", "")
+		F.Data.Dictionary.CreateFromDataTable("dictTemp", "dtTemp", "Out_JSS", "Out_PoLine")
+		F.Data.Dictionary.SetDefaultReturn("dictTemp", "")
+		F.Data.DataTable.FillFromDictionary("dtWOs$dtOut", "dictTemp", "Out_JSS", "Out_PoLine")
+		F.Data.Dictionary.Close("dictTemp")
+		
+		F.Data.DataTable.Close("dtTemp")
+		
+		F.Data.DataTable.AddRelation("dtWOs", "JS", "dtWOs$dtOut", "Out_JS", "Outside")
+		
+		F.Data.DataView.Create("dtWOs$dtOut", "dvOut")
+		Gui.F_WO.GsGCWO.AddGridViewFromDataView("gvOut", "dtWOs", "dvOut")
+		
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "MultiSelect", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "OptionBehaviorEditable", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "ReadOnly", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "AllowSort", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "AllowFilter", True)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "OptionsDetailShowDetailTabs", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "OptionsViewShowGroupPanel", False)
+		Gui.F_WO.GsGCWO.SetGridViewProperty("gvOut", "AllowColumnMoving", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_JS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_JSS", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Job", "Visible", False)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Suffix", "Visible", False)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Sequence", "Caption", "Seq.")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_VendorName", "Caption", "Vend. Name")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDescription", "Caption", "Description")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsStartDate", "Caption", "Start Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDueDate", "Caption", "Due Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsComplDate", "Caption", "Comp. Date")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoNumber", "Caption", "PO")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoLine", "Caption", "PO Line")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Sequence", "MinWidth", 75)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_VendorName", "MinWidth", 175)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDescription", "MinWidth", 200)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsStartDate", "MinWidth", 100)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDueDate", "MinWidth", 100)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsComplDate", "MinWidth", 100)	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoNumber", "MinWidth", 100)	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoLine", "MinWidth", 100)	
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Sequence", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsStartDate", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDueDate", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsComplDate", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoNumber", "HeaderHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoLine", "HeaderHAlignment", "Center")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Sequence", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsStartDate", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDueDate", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsComplDate", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoNumber", "CellHAlignment", "Center")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoLine", "CellHAlignment", "Center")
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoNumber", "CellFontUnderline", True)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoLine", "CellFontUnderline", True)
+		
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoNumber", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_PoLine", "CellForeColor", V.Enum.ThemeColors!AccentColor)
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_Sequence", "Fixed", "Left")
+	
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsStartDate", "DisplayCustomDatetime", "d")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsDueDate", "DisplayCustomDatetime", "d")
+		Gui.F_WO.GsGCWO.SetColumnProperty("gvOut", "Out_ApsComplDate", "DisplayCustomDatetime", "d")
+	
+		F.Intrinsic.Control.For(V.Local.i, 0, V.DataTable.dtWOs$dtOut.RowCount--, 2)
+			Gui.F_WO.GsGCWO.SetRowAppearance("gvOut", V.Local.i, "BackColor", "AliceBlue")
+		F.Intrinsic.Control.Next(V.Local.i)
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.LoadDtDvGvOut.End
+
+Program.Sub.GsGCWO_RowCellClick.Start
+	V.Local.sParams.Declare()
+	V.Local.sJob.Declare()
+	V.Local.sSuffix.Declare()
+	V.Local.sPart.Declare()
+	V.Local.sLoc.Declare()
+	V.Local.sPO.Declare()
+	V.Local.sSQL.Declare()
+	V.Local.sRet.Declare()
+	v.local.sFilter.Declare()
+	V.Local.sHold.Declare
+	V.Local.iHold.Declare
+	V.Local.bHold.Declare
+
+	F.Intrinsic.Control.Try
+
+		' If View is selected, then user can open view versions of WOs, Parts, POs. Cannot Print or Release.
+		' Else, Edit is selected and user can open edit versions and also Print or Release.
+		F.Intrinsic.Control.If(V.Screen.F_WO!optView.Value, =, True)
+		
+			F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+			
+				F.Intrinsic.Control.CaseAny("JOB", "SUFFIX")
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "JOB", V.Args.RowIndex, V.Local.sJob)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SUFFIX", V.Args.RowIndex, V.Local.sSuffix)
+					F.Intrinsic.String.Build("7!*!{0}!*!{1}!*!A", V.Local.sJob, V.Local.sSuffix, V.Local.sParams)
+					F.Global.General.CallWrapperSync(450000, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("DISPLAY_PART","LOCATION")
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs","PART", V.Args.RowIndex, V.Local.sPart)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs","LOCATION", V.Args.RowIndex, V.Local.sLoc)
+					F.Intrinsic.String.Build("{0}!*!{1}!*!O",V.Local.sPart, V.Local.sLoc, V.Local.sParams)
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					F.Global.General.CallWrapperSync(300011, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.Case("OPROC")
+					Gui.F_WO..Enabled(False)
+					
+					gui.fOutProc.GsGCOPROC.SuspendLayout()
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "JOB", V.Args.RowIndex, V.Local.sJob)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SUFFIX", V.Args.RowIndex, V.Local.sSuffix)
+					f.Intrinsic.Control.If(v.Local.sSuffix,=,"000")
+						f.Intrinsic.String.build("Job = '{0}'",v.Local.sJob,v.Local.sFilter)
+					f.Intrinsic.Control.Else
+						f.Intrinsic.String.build("Job = '{0}' and suffix = '{1}'",v.Local.sJob.Trim,v.Local.sSuffix.Trim,v.Local.sFilter)
+					f.Intrinsic.Control.EndIf
+					f.Data.DataView.SetFilter("dtOutProc","dtOutProcVw",v.Local.sFilter)
+					
+					gui.fOutProc.GsGCOPRO.Resumelayout()
+					gui.fOutProc..Visible(True)
+				F.Intrinsic.Control.Case("PRINTED")
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.Case("RELEASED")
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("Matl_DisplayPart", "Matl_Location")
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvMatl", "Matl_Part", V.Args.RowIndex, V.Local.sPart)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvMatl", "Matl_Location", V.Args.RowIndex, V.Local.sLoc)
+					F.Intrinsic.String.Build("{0}!*!{1}!*!O", V.Local.sPart, V.Local.sLoc, V.Local.sParams)
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					F.Global.General.CallWrapperSync(300011, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("Matl_PoLines_PoNumber", "Matl_PoLines_PoLine")
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvMatlPoLines", "Matl_PoLines_PoNumber", V.Args.RowIndex, V.Local.sPO)
+					F.Intrinsic.String.Build("V!*!{0}!*!", V.Local.sPO, V.Local.sParams)
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					F.Global.General.CallWrapperSync(175200, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("Out_PoNumber", "Out_PoLine")
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvOut", "Out_PoNumber", V.Args.RowIndex, V.Local.sPO)
+					F.Intrinsic.String.Build("V!*!{0}!*!", V.Local.sPO, V.Local.sParams)
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					F.Global.General.CallWrapperSync(175200, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+			F.Intrinsic.Control.EndSelect
+			
+		F.Intrinsic.Control.Else ' Edit is selected
+		
+			F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+			
+				F.Intrinsic.Control.CaseAny("JOB","SUFFIX")
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "JOB", V.Args.RowIndex, V.Local.sJob)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SUFFIX", V.Args.RowIndex, V.Local.sSuffix)
+					F.Intrinsic.String.Build("{0}!*!{1}!*!O", V.Local.sJob, V.Local.sSuffix, V.Local.sParams)
+					F.Global.General.CallWrapperSync(2009, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("DISPLAY_PART","LOCATION")
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "PART", V.Args.RowIndex, V.Local.sPart)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "LOCATION", V.Args.RowIndex, V.Local.sLoc)
+					F.Intrinsic.String.Build("{0}!*!{1}!*!M",V.Local.sPart, V.Local.sLoc, V.Local.sParams)
+					F.Global.General.CallWrapperSync(300011, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.Case("PRINTED")
+					Gui.F_WO.GsGCWO.SetCellValueByColumnName("gvWOs", "PRINTED", V.Args.RowIndex, True)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "JOB", V.Args.RowIndex, V.Local.sJob)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SUFFIX", V.Args.RowIndex, V.Local.sSuffix)
+					F.Intrinsic.String.ConcatCallWrapperArgs(V.Local.sJob, V.Local.sSuffix, "1811", V.Local.sParams)
+					F.Global.General.CallWrapperSync(900100, V.Local.sParams)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.Case("RELEASED")
+					Gui.F_WO.GsGCWO.SetCellValueByColumnName("gvWOs", "RELEASED", V.Args.RowIndex, True)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "JOB", V.Args.RowIndex, V.Local.sJob)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SUFFIX", V.Args.RowIndex, V.Local.sSuffix)
+					f.Intrinsic.String.Format(V.Ambient.Date.PervasiveDate, "MMDDYY", V.Local.sRet)
+					F.Intrinsic.Control.If(V.Caller.GSSVersion, =, "2016.1", OR, V.Caller.GSSVersion, =, "2016.2")
+						F.Intrinsic.String.Build("UPDATE JOB_HEADER SET FLAG_WO_PRTD = CASE WHEN FLAG_WO_PRTD = '' Then 'X' WHEN FLAG_WO_PRTD = 'Y' Then 'R' END, DATE_RELEASED = '{0}' WHERE JOB = '{1}' AND SUFFIX = '{2}';",V.Local.sRet, V.Local.sJob, V.Local.sSuffix.Trim, V.Local.sSQL)
+					F.Intrinsic.Control.Else
+						F.Intrinsic.String.Build("UPDATE JOB_HEADER SET FLAG_WO_RELEASED = 'Y', DATE_RELEASED = '{0}' WHERE JOB = '{1}' AND SUFFIX = '{2}';", V.Local.sRet, V.Local.sJob, V.Local.sSuffix.Trim, V.Local.sSQL)
+					F.Intrinsic.Control.EndIf
+					F.ODBC.Connection!con.Execute(V.Local.sSQL)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("Matl_DisplayPart", "Matl_Location")
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvMatl", "Matl_Part", V.Args.RowIndex, V.Local.sPart)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvMatl", "Matl_Location", V.Args.RowIndex, V.Local.sLoc)
+					F.Intrinsic.String.Build("{0}!*!{1}!*!M", V.Local.sPart, V.Local.sLoc, V.Local.sParams)
+					F.Global.General.CallWrapperSync(300011, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("Matl_PoLines_PoNumber", "Matl_PoLines_PoLine")
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvMatlPoLines", "Matl_PoLines_PoNumber", V.Args.RowIndex, V.Local.sPO)
+					F.Intrinsic.String.Build("O!*!{0}!*!", V.Local.sPO, V.Local.sParams)
+					F.Global.General.CallWrapperSync(175200, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.CaseAny("Out_PoNumber", "Out_PoLine")
+					F.Intrinsic.Control.CallSub(DisableScreen)
+					Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvOut", "Out_PoNumber", V.Args.RowIndex, V.Local.sPO)
+					F.Intrinsic.String.Build("O!*!{0}!*!", V.Local.sPO, V.Local.sParams)
+					F.Global.General.CallWrapperSync(175200, V.Local.sParams)
+					Gui.F_WO.GsGCWO.Enabled(True)
+					F.Intrinsic.Control.CallSub(EnableScreen)
+					F.Intrinsic.Control.ExitSub()
+					
+				F.Intrinsic.Control.Case("FLAG_HOLD")
+					gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs","JOB",V.Args.RowIndex,V.Local.sJob)
+					gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs","SUFFIX",V.Args.RowIndex,V.Local.sSuffix)
+					F.Intrinsic.Control.If(V.Args.CellValue)
+						V.Local.sHold.Set("N")
+						V.Local.iHold.Set(0)
+						V.Local.bHold.Set(False)
+						gui.F_WO.GsGCWO.SetCellValueByColumnName("gvWOs","FLAG_HOLD",V.Args.RowIndex,False)
+					F.Intrinsic.Control.Else
+						V.Local.sHold.Set("Y")
+						V.Local.iHold.Set(1)
+						V.Local.bHold.Set(True)
+						gui.F_WO.GsGCWO.SetCellValueByColumnName("gvWOs","FLAG_HOLD",V.Args.RowIndex,True)
+					F.Intrinsic.Control.EndIf
+					F.Intrinsic.String.Build("UPDATE JOB_HEADER SET FLAG_HOLD = '{0}' WHERE JOB = '{1}' AND SUFFIX = '{2}';",V.Local.sHold,V.Local.sJob,V.Local.sSuffix,V.Local.sSQL)
+					F.ODBC.Connection!con.Execute(V.Local.sSQL)
+					F.Intrinsic.String.Build("UPDATE APSV3_JBMASTER SET HOLD = '{0}' WHERE JOB = '{1}' AND SFX = '{2}';",V.Local.iHold,V.Local.sJob,V.Local.sSuffix,V.Local.sSQL)
+					F.ODBC.Connection!con.Execute(V.Local.sSQL)
+			
+					
+			F.Intrinsic.Control.EndSelect
+			
+		F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.GsGCWO_RowCellClick.End
+
+Program.Sub.GsGCWO_CellValueChanged.Start
+	V.Local.sSQL.Declare()
+	V.Local.sJob.Declare()
+	V.Local.sSuffix.Declare()
+	V.Local.sText.Declare()
+	v.Local.sTextTbl.Declare
+	v.Local.sSOline.Declare
+	v.Local.sSO.Declare
+	v.Local.sLine.Declare
+
+	F.Intrinsic.Control.Try
+
+		F.Intrinsic.Control.If(V.Args.COLUMN, =, "NOTES")
+			
+			Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "JOB", V.Args.RowIndex, V.Local.sJob)
+			Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SUFFIX", V.Args.RowIndex, V.Local.sSuffix)
+			F.Intrinsic.String.Replace(V.Args.Value, "'", "''", V.Local.sText)
+			
+			' If the JS already exists in the notes, then Delete first before Insert.
+			F.Intrinsic.String.Build("SELECT * FROM GCG_6132_WO_NOTES WHERE js = '{0}{1}';", V.Local.sJob, V.Local.sSuffix, V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRW("rstNotes",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstNotes.EOF, =, False)
+			
+				F.Intrinsic.String.Build("DELETE FROM GCG_6132_WO_NOTES WHERE js = '{0}{1}';", V.Local.sJob, V.Local.sSuffix, V.Local.sSQL)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+				
+			F.Intrinsic.Control.EndIf
+			
+			F.Intrinsic.String.Build("INSERT INTO GCG_6132_WO_NOTES(js, job, suffix, notes) VALUES('{0}{1}','{0}','{1}','{2}');", V.Local.sJob, V.Local.sSuffix, V.Local.sText, V.Local.sSQL)
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+			
+			F.ODBC.con!rstNotes.Close()
+		f.Intrinsic.Control.ElseIf(V.Args.COLUMN, =, "SO_NOTES")
+			Gui.F_WO.GsGCWO.GetCellValueByColumnName("gvWOs", "SO_LINE", V.Args.RowIndex, V.Local.sSOline)
+			f.Intrinsic.Control.If(v.Local.sSOline.Trim,=,"")
+				f.Intrinsic.Control.ExitSub
+			f.Intrinsic.Control.EndIf
+			
+			F.Intrinsic.String.Replace(V.Args.Value,"'","''",V.Local.sTextTbl)
+			F.Intrinsic.String.Build("SELECT * FROM GAB_4167_SO_NOTES WHERE SO + SOLINE = '{0}';",V.Local.sSOLine,V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRW("rstNotes",V.Local.sSQL)
+			f.Intrinsic.String.Left(v.Local.sSOline,7,v.Local.sSO)
+			f.Intrinsic.String.Right(v.Local.sSOline,3,v.Local.sLine)
+			f.Intrinsic.Control.If(v.Local.sSO.Trim,=,"0000000","OR",v.Local.sSO.Trim,=,"")
+				f.Intrinsic.Control.ExitSub
+			f.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.If(V.ODBC.con!rstNotes.EOF,=,True)
+				
+				F.Intrinsic.String.Build("INSERT INTO GAB_4167_SO_NOTES(SO,SOLINE,NOTES) VALUES('{0}','{1}','{2}');",V.Local.sSO,V.Local.sLine,V.Local.sTextTbl,V.Local.sSQL)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Build("UPDATE GAB_4167_SO_NOTES SET NOTES = '{0}' WHERE SO = '{1}' AND SOLINE = '{2}';",V.Local.sTextTbl,V.Local.sSO,V.Local.sLine,V.Local.sSQL)
+				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstNotes.Close
+		F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.Catch
+	
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.GsGCWO_CellValueChanged.End
+
+Program.Sub.picGSSLogo_DblClick.Start
+	F.Intrinsic.Control.Try
+	
+		F.Intrinsic.Task.ShellExec(0, "Open", "http://www.globalshopsolutions.com/login-customer", "", "", 0)
+	
+	F.Intrinsic.Control.Catch
+		
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Ambient.ScriptPath, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Global.sError)
+		F.Intrinsic.UI.Msgbox(V.Global.sError)
+		F.Intrinsic.Control.End()
+		
+	F.Intrinsic.Control.EndTry
+	
+Program.Sub.picGSSLogo_DblClick.End
+
+Program.Sub.fOutProc_UnLoad.Start
+gui.fOutProc..Visible(false)
+gui.F_WO..Enabled(True)
+gui.F_WO..SetFocus()
+Program.Sub.fOutProc_UnLoad.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$$}$12:00:00 AM$}$False
+${$5$}$2.0.0.0$}$2
+${$6$}$bpham$}$20210513123736095$}$Di0riF4Q5RIv6jxva5zSWDOOsXP37Nso0sXcDvFZsdtA4piIpapVer0L4ZnV+1x+NA9ovMpsm9w=
+Program.Sub.Comments.End
